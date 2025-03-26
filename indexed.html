@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Valentine countdown timer/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=3d|3d-float">
+    <title>Document</title>
+</head>
+<body>
+    <div class="hero">
+       <h1>Chris➕mas Count-Down 🎄🎅</h1> 
+       <div class="timebox">
+        <div class="time">
+            <h2 id="days">00</h2>
+            <p>Days</p>
+        </div>
+        <div class="time">
+            <h2 id="hours">00</h2>
+            <p>Hours</p>
+        </div>
+        <div class="time">
+            <h2 id="minutes">00</h2>
+            <p>Minutes</p>
+        </div>
+        <div class="time">
+            <h2 id="seconds">00</h2>
+            <p>Seconds</p>
+        </div>
+       </div>
+    </div>
+    <script>
+        const Days = document.getElementById('days');
+        const Hours = document.getElementById('hours');
+        const Minutes = document.getElementById('minutes');
+        const Seconds = document.getElementById('seconds');
+
+        const targetDate = new Date('December 25 2025 00:00:00').getTime();
+
+        function timer () {
+            const currentDate = new Date().getTime();
+            const distance = targetDate - currentDate;
+
+            const days = Math.floor(distance / 1000 / 60 / 60 / 24);
+            const hours = Math.floor(distance / 1000 / 60 / 60) % 24;
+            const minutes = Math.floor(distance / 1000 / 60) % 60;
+            const seconds = Math.floor(distance / 1000) % 60;
+
+            Days.innerHTML = days;
+            Hours.innerHTML = hours;
+            Minutes.innerHTML = minutes;
+            Seconds.innerHTML = seconds;
+
+            if (distance < 0){
+                Days.innerHTML = "00";
+                Hours.innerHTML = "00";
+                Minutes.innerHTML = "00";
+                Seconds.innerHTML = "00";
+            }
+        }
+
+        setInterval(timer, 1000);
+    </script>
+</body>
+</html>
